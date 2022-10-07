@@ -2,14 +2,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Cars {
+public class Racing {
 
     private final List<Car> carList = new ArrayList<>();
 
-    public Cars(String names) {
-
+    public Racing(String names) {
         String[] split = names.split(",");
-
         for (String name : split) {
             carList.add(new Car(name));
         }
@@ -18,15 +16,17 @@ public class Cars {
     public void goCars(int repeat) throws InterruptedException {
         System.out.println("실행결과");
         System.out.println("========================================= :: ");
-
         for (int i = 1; i <= repeat; i++) {
             roundStart(i);
         }
+        winner();
+        System.out.println("========================================= :: ");
+    }
 
+    private void winner() {
         int winnerPoint = carList.stream().mapToInt(Car::getPoint).max().orElse(0);
         String winnerName = carList.stream().filter(car -> car.getPoint() == winnerPoint).map(Car::getName).collect(Collectors.joining(","));
         System.out.println("우승자는 :: " + winnerName);
-        System.out.println("========================================= :: ");
     }
 
     private void roundStart(int i) throws InterruptedException {
@@ -37,9 +37,5 @@ public class Cars {
             System.out.println(car);
         }
         System.out.println("========================================= :: ");
-    }
-
-    public List<Car> getCarList() {
-        return carList;
     }
 }

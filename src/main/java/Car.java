@@ -4,6 +4,7 @@ public class Car {
 
     public static final int NAME_MAX_LENGTH = 5;
     public static final int GO_LIMIT = 4;
+    public static final int MAX_BOUND = 9;
     private final String name;
     private int point = 0;
 
@@ -22,9 +23,9 @@ public class Car {
         go(randomInt());
     }
 
-    public int randomInt() {
+    int randomInt() {
         Random random = new Random();
-        return random.nextInt(9);
+        return random.nextInt(MAX_BOUND);
     }
 
     void go(int randomInt) {

@@ -25,7 +25,7 @@ public class GoTest {
         assertThat(car.getPoint()).isEqualTo(0);
     }
 
-    @RepeatedTest(10)
+    @RepeatedTest(30)
     void 랜덤_숫자_0_9() {
         assertThat(car.randomInt()).isGreaterThanOrEqualTo(0).isLessThanOrEqualTo(9);
     }
